@@ -2,32 +2,27 @@ package com.driver;
 
 public class Pizza {
 
-    protected int price;
-    protected int nonVegePrice;
+    private int price;
     private Boolean isVeg;
     private String bill;
     private boolean isTakeAwayAdded = false;
-    protected int takeCharge;
+    private int takeCharge;
     private int totalTakeCharge;
     private boolean isCheezeAdded = false;
-    protected int cheezeCharge;
+    private int cheezeCharge;
     private int totalCheezeCharge;
     private boolean isToppingAdded = false;
-    protected int toppingCharge;
+    private int toppingCharge;
     private int totalToppingCharge;
     private String[] billArr =  new String[5];
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         // your code goes here
-    }
-    public Pizza(boolean isVeg, int price,int nonVegePrice,int cheezeCharge, int toppingCharge, int takeCharge) {
-        this.isVeg = isVeg;
-        this.price = price;
-        this.nonVegePrice = nonVegePrice;
-        this.cheezeCharge = cheezeCharge;
-        this.toppingCharge = toppingCharge;
-        this.takeCharge = takeCharge;
+        price = isVeg ? 300 : 400;
+        cheezeCharge = 80;
+        toppingCharge = isVeg ? 70 : 120;
+        takeCharge = 20;
     }
     public int getPrice(){
         return this.price;
@@ -68,18 +63,14 @@ public class Pizza {
 
     public String getBill(){
         // your code goes here
-        if(isVeg)
-            billArr[0] = "Base Price of Pizza: " + price;
-        else
-            billArr[0] = "Base Price of Pizza: " + nonVegePrice;
+        billArr[0] = "Base Price of Pizza: " + price;
 
         bill = billArr[0];
         for(int i=1;i<5;i++) {
             if( billArr[i] != null )
                bill = bill + "\n" + billArr[i];
         }
-        int total = isVeg ? price : nonVegePrice;
-        total += totalCheezeCharge + totalToppingCharge + totalTakeCharge;
+        int total = price + totalCheezeCharge + totalToppingCharge + totalTakeCharge;
         billArr[4] = "Total Price: " + total;
 
         bill = bill + "\n" + billArr[4];
