@@ -63,7 +63,7 @@ public class Pizza {
 
     public String getBill(){
         // your code goes here
-        billArr[0] = "Base Price of Pizza: " + price;
+        billArr[0] = "Base Price Of The Pizza: " + price;
 
         bill = billArr[0];
         for(int i=1;i<5;i++) {
